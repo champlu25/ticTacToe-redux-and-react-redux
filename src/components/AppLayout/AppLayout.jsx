@@ -1,8 +1,7 @@
 import "../../App.css";
 import { Information, Field } from "../../components";
-import { store } from "../../store";
 
-export const AppLayout = () => {
+export const AppLayout = ({ onRestart }) => {
   return (
     <>
       <Information />
@@ -10,7 +9,7 @@ export const AppLayout = () => {
       <button
         className="restart-btn"
         onClick={() => {
-          store.dispatch({ type: "RESTART_GAME" });
+          onRestart();
         }}
       >
         Начать заново
