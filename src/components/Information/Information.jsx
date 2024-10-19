@@ -1,30 +1,24 @@
-import styles from "./information.module.css";
 import { useSelector } from "react-redux";
+import { InformationLayout } from "./InformationLayout";
 import {
   selectCurrentPlayer,
   selectIsDraw,
   selectIsGameEnded,
 } from "../../selectors";
 
-// stateless-компонент
-const InformationLayout = () => {
+// statefull-компонент
+export const Information = () => {
   const isDraw = useSelector(selectIsDraw);
   const isGameEnded = useSelector(selectIsGameEnded);
   const currentPlayer = useSelector(selectCurrentPlayer);
   const winner = useSelector((state) => state.winner);
 
   return (
-    <div className={styles.statusGame}>
-      {isGameEnded && !isDraw ? `Победа: ${winner}` : null}
-      {isDraw ? "Ничья" : null}
-      {!isDraw && !isGameEnded ? `Ходит: ${currentPlayer}` : null}
-    </div>
+    <InformationLayout
+      isDraw={isDraw}
+      isGameEnded={isGameEnded}
+      currentPlayer={currentPlayer}
+      winner={winner}
+    />
   );
 };
-
-// statefull-компонент
-const Information = () => {
-  return <InformationLayout />;
-};
-
-export default Information;

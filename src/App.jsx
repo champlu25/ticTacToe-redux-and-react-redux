@@ -1,6 +1,5 @@
 import "./App.css";
-import Field from "./components/Field/Field";
-import Information from "./components/Information/Information";
+import { Information, Field } from "./components";
 import { store } from "./store";
 
 const AppLayout = () => {
